@@ -8,5 +8,5 @@ class GenreDAO:
     def get_all_genres(self):
         return self.session.query(Genre).all()
 
-    def get_director_by_id(self, gid):
+    def get_genre_by_id(self, gid):
         return self.session.query(Genre).get(gid)

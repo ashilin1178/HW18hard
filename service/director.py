@@ -3,11 +3,19 @@
 # но чаще всего будет какая-то логика обработки данных сейчас или в будущем.
 
 # Пример
+from typing import List
 
-# class BookService:
-#
-#     def __init__(self, book_dao: BookDAO):
-#         self.book_dao = book_dao
-#
-#     def get_books(self) -> List["Book"]:
-#         return self.book_dao.get_books()
+from dao.director import DirectorDAO
+
+
+class DirectorService:
+
+    def __init__(self, director_dao: DirectorDAO):
+        self.director_dao = director_dao
+
+    def get_directors(self) -> List[DirectorDAO]:
+        return self.director_dao.get_all_directors()
+
+    def det_drector_by_id(self, did):
+        return self.director_dao.get_director_by_id(did)
+
