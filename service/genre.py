@@ -11,5 +11,5 @@ class GenreService:
     def get_genres(self) -> List[GenreDAO]:
         return self.genre_dao.get_all_genres()
 
-    def det_genre_by_id(self, gid):
+    def get_genre_by_id(self, gid):
         return self.genre_dao.get_genre_by_id(gid)
