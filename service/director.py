@@ -16,6 +16,6 @@ class DirectorService:
     def get_directors(self) -> List[DirectorDAO]:
         return self.director_dao.get_all_directors()
 
-    def get_drector_by_id(self, did):
+    def get_director_by_id(self, did):
         return self.director_dao.get_director_by_id(did)
 

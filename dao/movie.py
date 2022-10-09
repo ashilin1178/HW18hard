@@ -1,3 +1,5 @@
+# это файл для классов доступа к данным (Data Access Object). Здесь должен быть класс с методами доступа к данным
+# здесь в методах можно построить сложные запросы к БД
 from dao.model.models import Movie
 
 
@@ -9,14 +11,14 @@ class MovieDAO:
         return self.session.query(Movie).all()
 
     def get_movie_by_id(self, mid):
-        return self.session.query(Movie).get(mid)
+        return self.session.query(Movie).filter(Movie.id == mid).one()
 
     def get_movies_by_kwargs(self, **kwargs):
-        return self.session.filter_by(**kwargs).all()
+        return self.session.query(Movie).filter_by(**kwargs).all()
 
     def create_movie(self, **kwargs):
         try:
-            self.session.query.add(Movie(**kwargs))
+            self.session.add(Movie(**kwargs))
             self.session.commit()
             return True
         except Exception as e:
@@ -26,7 +28,7 @@ class MovieDAO:
 
     def edit_movie_by_id(self, mid, **kwargs):
         try:
-            self.session.query.filter(Movie.id == mid).update(kwargs)
+            self.session.query(Movie).filter(Movie.id == mid).update(kwargs)
             self.session.commit()
             return True
         except Exception as e:
@@ -36,7 +38,7 @@ class MovieDAO:
 
     def delete_movie_by_id(self, mid):
         try:
-            self.session.query.filter(Movie.id == mid).delete()
+            self.session.query(Movie).filter(Movie.id == mid).delete()
             self.session.commit()
             return True
 
@@ -44,4 +46,3 @@ class MovieDAO:
             print(e)
             self.session.rollback()
             return False
-

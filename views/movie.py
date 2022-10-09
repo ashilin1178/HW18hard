@@ -44,7 +44,7 @@ class GenresView(Resource):
         """
 
         result = movie_service.get_movie_by_id(mid)
-        return movies_schema.dump(result), 200
+        return movie_schema.dump(result), 200
 
     def put(self, mid):
         """
@@ -54,7 +54,7 @@ class GenresView(Resource):
         """
         req = request.json
         if movie_service.edit_movie(mid, **req):
-            return "фильм обновился", 204
+            return "фильм обновился", 200
         else:
             return "ошибка обновления", 404
 

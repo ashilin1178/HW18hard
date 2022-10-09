@@ -32,5 +32,5 @@ class DirectorsView(Resource):
         :return:
         """
 
-        result = director_service.get_drector_by_id(did)
+        result = director_service.get_director_by_id(did)
         return director_schema.dump(result), 200

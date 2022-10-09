@@ -1,3 +1,4 @@
+# описываем схемы сериализации для всех моделей
 from marshmallow import Schema, fields
 
 

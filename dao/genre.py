@@ -1,3 +1,5 @@
+# это файл для классов доступа к данным (Data Access Object). Здесь должен быть класс с методами доступа к данным
+# здесь в методах можно построить сложные запросы к БД
 from dao.model.models import Genre
 
 
@@ -9,4 +11,4 @@ class GenreDAO:
         return self.session.query(Genre).all()
 
     def get_genre_by_id(self, gid):
-        return self.session.query(Genre).get(gid)
+        return self.session.query(Genre).filter(Genre.id == gid).one()
